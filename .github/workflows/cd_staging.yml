@@ -19,6 +19,8 @@ jobs:
                 script_stop: true
                 script: |
                     # deployment script
+                    echo $SHELL
+                    echo $PATH
                     cd /home/hit/monorepo-deployment
                     echo "current user: $(whoami)"
                     git pull origin main
