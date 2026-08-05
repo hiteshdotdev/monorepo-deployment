@@ -23,6 +23,6 @@ jobs:
                     pnpm install
                     pnpm run build
                     pm2 restart web-app
-                    /usr/sbin/nginx -s reload
+                    sudo nginx -s reload
                     pm2 restart http-server
                     pm2 restart ws-server
