@@ -16,25 +16,15 @@ jobs:
                 username: ${{ secrets.SSH_USER }}
                 key: ${{ secrets.SSH_PVT_KEY }}
                 port: ${{ secrets.SSH_PORT || 22 }}
-
-          - name: print home dir content
-            run: ls /home/
-
-          - name: Change the login user
-            run: su - hit
-
-          - name: Change directory to the application
-            run: cd /home/hit/monorepo-deployment
-
-          - name: build the application
-            run: |
-                git pull origin main
-                pnpm install
-                pnpm run build  
-
-         # restart the web, http and ws server
-          - run: |
-                pm2 restart web-app
-                sudo /usr/sbin/nginx -s reload
-                pm2 restart http-server
-                pm2 restart ws-server
+                script_stop: true
+                script: |
+                    ls /home/
+                    su - hit
+                    cd /home/hit/monorepo-deployment
+                    git pull origin main
+                    pnpm install
+                    pnpm run build
+                    pm2 restart web-app
+                    sudo /usr/sbin/nginx -s reload
+                    pm2 restart http-server
+                    pm2 restart ws-server
