@@ -20,6 +20,7 @@ jobs:
                 script: |
                     # deployment script
                     cd /home/hit/monorepo-deployment
+                    echo "current user: $(whoami)"
                     git pull origin main
                     pnpm install
                     pnpm run build
