@@ -18,10 +18,10 @@ jobs:
                 port: ${{ secrets.SSH_PORT || 22 }}
 
           - name: Change the login user
-            run: su - {{ secrets.USER }}
+            run: su - hit
 
           - name: Change directory to the application
-            run: cd /home/{{ secrets.USER }}/monorepo-deployment
+            run: cd /home/hit/monorepo-deployment
 
           - name: build the application
             run: |
