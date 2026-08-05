@@ -21,6 +21,7 @@ jobs:
                     # deployment script
                     echo $SHELL
                     echo $PATH
+                    env
                     cd /home/hit/monorepo-deployment
                     echo "current user: $(whoami)"
                     git pull origin main
