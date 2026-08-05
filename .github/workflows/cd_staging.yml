@@ -18,6 +18,7 @@ jobs:
                 port: ${{ secrets.SSH_PORT || 22 }}
                 script_stop: true
                 script: |
+                    # deployment script
                     cd /home/hit/monorepo-deployment
                     git pull origin main
                     pnpm install
