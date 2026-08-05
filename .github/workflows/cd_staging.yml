@@ -19,9 +19,8 @@ jobs:
                 script_stop: true
                 script: |
                     # deployment script
-                    npm i -g pnpm
-                    export PATH=$PATH:/root/.nvm/versions/node/v24.19.0/bin/node
-                    export PATH=$PATH:/root/.nvm/versions/node/v24.19.0/bin/pnpm
+                    source ~/.profile
+                    source ~/.bashrc
                     cd /home/hit/monorepo-deployment
                     git pull origin main
                     pnpm install
