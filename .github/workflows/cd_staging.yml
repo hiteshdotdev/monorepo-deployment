@@ -18,13 +18,11 @@ jobs:
                 port: ${{ secrets.SSH_PORT || 22 }}
                 script_stop: true
                 script: |
-                    ls /home/
-                    su - hit
                     cd /home/hit/monorepo-deployment
                     git pull origin main
                     pnpm install
                     pnpm run build
                     pm2 restart web-app
-                    sudo /usr/sbin/nginx -s reload
+                    /usr/sbin/nginx -s reload
                     pm2 restart http-server
                     pm2 restart ws-server
