@@ -22,11 +22,9 @@ jobs:
                     export PATH=$PATH:/root/.nvm/versions/node/v24.19.0/bin/node
                     export PATH=$PATH:/root/.nvm/versions/node/v24.19.0/bin/pnpm
                     cd /home/hit/monorepo-deployment
-                    echo "current user: $(whoami)"
                     git pull origin main
-                    /root/.nvm/versions/node/v24.19.0/bin/pnpm install
-                    /root/.nvm/versions/node/v24.19.0/bin/pnpm run build
+                    pnpm install
+                    pnpm run build
                     pm2 restart web-app
-                    sudo nginx -s reload
                     pm2 restart http-server
                     pm2 restart ws-server
