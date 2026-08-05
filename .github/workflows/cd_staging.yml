@@ -18,6 +18,8 @@ jobs:
                 port: ${{ secrets.SSH_PORT || 22 }}
                 script_stop: true
                 script: |
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
                     cd /root/monorepo-deployment
                     git pull origin main
                     pnpm install
