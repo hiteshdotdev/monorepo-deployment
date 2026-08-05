@@ -16,13 +16,18 @@ jobs:
                 username: ${{ secrets.SSH_USER }}
                 key: ${{ secrets.SSH_PVT_KEY }}
                 port: ${{ secrets.SSH_PORT || 22 }}
-                script_stop: true
-                script: |
-                    su - ${{ secrets.USER }}
-                    cd monorepo-deployment
-                    git pull origin main
-                    pnpm install
-                    pnpm run build
+
+          - name: Change the login user
+            run: su - {{ secrets.USER }}
+
+          - name: Change directory to the application
+            run: cd /home/{{ secrets.USER }}/monorepo-deployment
+
+          - name: build the application
+            run: |
+                git pull origin main
+                pnpm install
+                pnpm run build  
 
          # restart the web, http and ws server
           - run: |
