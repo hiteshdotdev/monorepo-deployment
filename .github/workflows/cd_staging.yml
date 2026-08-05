@@ -17,6 +17,9 @@ jobs:
                 key: ${{ secrets.SSH_PVT_KEY }}
                 port: ${{ secrets.SSH_PORT || 22 }}
 
+          - name: print current working dir
+            run: pwd
+
           - name: Change the login user
             run: su - hit
 
