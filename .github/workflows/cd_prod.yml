@@ -20,7 +20,7 @@ jobs:
                 script: |
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-                    cd /root/monorepo-deployment
+                    cd monorepo-deployment
                     git pull origin production
                     pnpm install
                     pnpm run build
